@@ -1,17 +1,12 @@
 import webiopi
-import RPi.GPIO as GPIO
 import subprocess
 import time;
 
-GPIO.setmode(GPIO.BCM)
-gpio_pin = 17
+gpio_pin = "22"
 dir = "/home/yurisi/webiopi/html/script/"
 
-def setup():
-    GPIO.setup(gpio_pin, GPIO.OUT)
-
 def runCode(code):
-    subprocess.call('python3 '+dir+'irrp.py -p -g22 -f '+dir+'codes ' + code, shell=True)
+    subprocess.call('python3 '+dir+'irrp.py -p -g'+gpio_pin+' -f '+dir+'codes ' + code, shell=True)
 
 @webiopi.macro
 def LIGHT_ON():
